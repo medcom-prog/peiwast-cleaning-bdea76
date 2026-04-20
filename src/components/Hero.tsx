@@ -3,115 +3,147 @@ import { motion } from 'framer-motion';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const stats = [
-  { value: 'ISO-sertifisert', label: 'for alle flater' },
-  { value: 'B2B only',        label: 'kun bedrifter' },
-  { value: '48t',             label: 'responstid' },
+  { value: 'ISO-sert.', label: 'for alle flater' },
+  { value: 'B2B only', label: 'kun bedrifter' },
+  { value: '48t',      label: 'responstid' },
 ];
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden pt-24 pb-16"
-      style={{ backgroundColor: 'var(--bg)' }}
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20 pb-20"
+      style={{ backgroundColor: '#FAFAF7' }}
     >
-      {/* Background accent — geometric, not blob */}
+      {/* Large geometric lime accent — top right, clipped */}
       <div
         aria-hidden="true"
-        className="absolute top-0 right-0 w-[55vw] h-[55vw] max-w-[780px] max-h-[780px] rounded-full opacity-60 translate-x-1/3 -translate-y-1/4 pointer-events-none"
-        style={{ backgroundColor: '#F0FCC5' }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full opacity-40 -translate-x-1/2 translate-y-1/4 pointer-events-none"
-        style={{ backgroundColor: '#E3F899' }}
+        className="absolute top-0 right-0 w-[560px] h-[560px] pointer-events-none"
+        style={{
+          borderRadius: '0 0 0 100%',
+          background: 'linear-gradient(135deg, #F0FCC5 0%, #D4F063 100%)',
+          opacity: 0.45,
+        }}
       />
 
       <div className="container relative z-10">
-        <div className="max-w-4xl">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE }}
-            className="font-mono text-xs uppercase tracking-widest text-ink-500 mb-6"
-            style={{ letterSpacing: '0.12em', fontSize: '0.6875rem' }}
-          >
-            Bedriftsrenhold — Oslo
-          </motion.p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[75vh]">
+          {/* Left — copy */}
+          <div className="flex flex-col justify-center">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="font-mono uppercase text-ink-400 mb-6"
+              style={{ fontSize: '0.6875rem', letterSpacing: '0.14em' }}
+            >
+              Bedriftsrenhold — Oslo
+            </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
-            className="font-display text-ink-800 mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4.75rem)', lineHeight: '1.02', letterSpacing: '-0.03em' }}
-          >
-            Kontoret ditt{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10">fortjener bedre.</span>
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-1 h-3 rounded-sm opacity-70 -z-10"
-                style={{ backgroundColor: '#D4F063' }}
-              />
-            </span>
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.08 }}
+              className="font-display text-ink-800 mb-6"
+              style={{ fontSize: 'clamp(2.75rem, 6vw, 5rem)', lineHeight: '1.0', letterSpacing: '-0.035em' }}
+            >
+              Kontoret ditt{' '}
+              <br className="hidden sm:block" />
+              <span className="relative inline-block">
+                <span className="relative z-10">fortjener</span>
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 rounded-sm"
+                  style={{ bottom: '2px', height: '14px', backgroundColor: '#D4F063', zIndex: 0, opacity: 0.8 }}
+                />
+              </span>
+              {' '}bedre.
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
-            className="font-sans text-lg md:text-xl text-ink-500 max-w-xl leading-relaxed mb-10"
-          >
-            Vi renholder kontorer for SMB-bedrifter som er klare for å bytte leverandør.
-            Sertifisert for alle overflatetyper og dybderenhold — uten at du trenger å løfte en finger.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
+              className="font-sans text-ink-500 leading-relaxed mb-10 max-w-md"
+              style={{ fontSize: '1.125rem' }}
+            >
+              Vi renholder kontorer for SMB-bedrifter som er klare for å bytte leverandør.
+              Sertifisert for alle overflatetyper og dybderenhold.
+            </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: EASE, delay: 0.28 }}
+              className="flex flex-wrap items-center gap-4 mb-16"
+            >
+              <a
+                href="#kontakt"
+                className="inline-flex items-center gap-2 font-display font-bold text-base px-7 py-3.5 rounded-full transition-all hover:opacity-90"
+                style={{ backgroundColor: '#0F1B2D', color: '#D4F063' }}
+              >
+                Få pristilbud
+              </a>
+              <a
+                href="tel:91389872"
+                className="inline-flex items-center gap-2 font-sans text-sm font-medium text-ink-500 hover:text-ink-800 transition-colors"
+              >
+                eller ring 913 89 872
+              </a>
+            </motion.div>
+
+            {/* Stats row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE, delay: 0.42 }}
+              className="flex flex-wrap gap-x-10 gap-y-4 border-t border-ink-100 pt-8"
+            >
+              {stats.map(s => (
+                <div key={s.value} className="flex flex-col gap-0.5">
+                  <span
+                    className="font-display font-bold text-ink-800"
+                    style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', lineHeight: '1.1', letterSpacing: '-0.02em' }}
+                  >
+                    {s.value}
+                  </span>
+                  <span
+                    className="font-mono uppercase text-ink-400"
+                    style={{ fontSize: '0.6875rem', letterSpacing: '0.12em' }}
+                  >
+                    {s.label}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right — image */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.28 }}
-            className="flex flex-wrap items-center gap-4"
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
+            className="hidden lg:block relative"
           >
-            <a
-              href="#kontakt"
-              className="inline-flex items-center gap-2 font-display font-bold text-base px-7 py-3.5 rounded-full transition-all"
-              style={{ backgroundColor: '#0F1B2D', color: '#D4F063' }}
+            <div className="overflow-hidden" style={{ borderRadius: '1.75rem', aspectRatio: '4/5' }}>
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&auto=format&fit=crop"
+                alt="Rent og lyst kontorlokale i Oslo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Small floating card */}
+            <div
+              className="absolute -bottom-4 -left-6 rounded-2xl px-5 py-4"
+              style={{ backgroundColor: '#D4F063', boxShadow: '0 2px 4px rgba(15,27,45,0.05), 0 16px 40px rgba(15,27,45,0.10)' }}
             >
-              Få pristilbud
-            </a>
-            <a
-              href="tel:91389872"
-              className="inline-flex items-center gap-2 text-ink-600 hover:text-ink-900 font-sans text-sm font-medium transition-colors"
-            >
-              eller ring 913 89 872
-            </a>
+              <p className="font-display font-bold text-ink-800 text-base leading-tight">
+                Befaring inkludert<br />
+                <span className="font-sans font-normal text-ink-700 text-sm">Alltid uforpliktende</span>
+              </p>
+            </div>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.42 }}
-          className="mt-20 flex flex-wrap gap-x-12 gap-y-6 border-t border-ink-100 pt-8"
-        >
-          {stats.map(s => (
-            <div key={s.value} className="flex flex-col gap-0.5">
-              <span
-                className="font-display text-ink-800 font-bold"
-                style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.375rem)', lineHeight: '1.15', letterSpacing: '-0.015em' }}
-              >
-                {s.value}
-              </span>
-              <span
-                className="font-mono text-ink-500 uppercase"
-                style={{ fontSize: '0.6875rem', letterSpacing: '0.12em' }}
-              >
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
