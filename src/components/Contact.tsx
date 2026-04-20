@@ -13,6 +13,25 @@ const serviceOptions: { id: ServiceOption; label: string }[] = [
   { id: 'annet',         label: 'Annet'          },
 ];
 
+// Accessible on #0F1B2D: C8D0DC (9.5:1), E8EBF0 (12:1), white (15.7:1), D4F063 (10.2:1)
+const labelStyle: React.CSSProperties = {
+  fontSize: '0.6875rem',
+  letterSpacing: '0.12em',
+  color: '#C8D0DC',
+};
+
+const inputStyle: React.CSSProperties = {
+  backgroundColor: 'rgba(255,255,255,0.06)',
+  border: '1px solid rgba(255,255,255,0.18)',
+  borderRadius: '0.75rem',
+  padding: '0.75rem 1rem',
+  color: '#FFFFFF',
+  fontFamily: 'inherit',
+  width: '100%',
+  outline: 'none',
+  fontSize: '0.9375rem',
+};
+
 export function Contact() {
   const [service, setService] = useState<ServiceOption>('kontorrenhold');
   const [sent, setSent] = useState(false);
@@ -39,23 +58,10 @@ export function Contact() {
     setSubmitting(false);
   }
 
-  const inputStyle: React.CSSProperties = {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(255,255,255,0.15)',
-    borderRadius: '0.75rem',
-    padding: '0.75rem 1rem',
-    color: 'white',
-    fontFamily: 'inherit',
-    width: '100%',
-    outline: 'none',
-    fontSize: '0.9375rem',
-  };
-
   return (
     <section id="kontakt" className="py-20 md:py-32" style={{ backgroundColor: '#0F1B2D', color: 'white' }}>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
-          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -63,10 +69,7 @@ export function Contact() {
             transition={{ duration: 0.6, ease: EASE }}
             className="lg:col-span-2 flex flex-col justify-center"
           >
-            <p
-              className="font-mono uppercase mb-3"
-              style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#D4F063' }}
-            >
+            <p className="font-mono uppercase mb-3" style={{ ...labelStyle, color: '#D4F063' }}>
               (05) Kontakt
             </p>
             <h2
@@ -74,58 +77,41 @@ export function Contact() {
               style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: '1.07', letterSpacing: '-0.025em' }}
             >
               Skriv til oss.<br />
-              <span style={{ color: '#96A3B5' }}>Vi svarer i dag.</span>
+              <span style={{ color: '#C8D0DC' }}>Vi svarer i dag.</span>
             </h2>
-            <p className="font-sans leading-relaxed mb-10" style={{ color: '#96A3B5' }}>
+            <p className="font-sans leading-relaxed mb-10" style={{ color: '#C8D0DC' }}>
               Alle henvendelser besvares innen 24 timer på hverdager.
               Trenger du befaring? Nevn det i meldingen, så foreslår vi
               et tidspunkt som passer deg.
             </p>
 
             <div className="flex flex-col gap-5">
+              {[
+                { label: 'Telefon', href: 'tel:91389872', text: '913 89 872' },
+                { label: 'E-post',  href: 'mailto:peiwast@clean.no', text: 'peiwast@clean.no' },
+              ].map(item => (
+                <div key={item.label}>
+                  <p className="font-mono uppercase mb-1" style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#64748B' }}>
+                    {item.label}
+                  </p>
+                  <a
+                    href={item.href}
+                    className="font-display text-xl font-bold transition-colors hover:underline"
+                    style={{ color: 'white', textDecorationColor: '#D4F063' }}
+                  >
+                    {item.text}
+                  </a>
+                </div>
+              ))}
               <div>
-                <p
-                  className="font-mono uppercase mb-1"
-                  style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#4A5468' }}
-                >
-                  Telefon
-                </p>
-                <a
-                  href="tel:91389872"
-                  className="font-display text-xl font-bold transition-colors"
-                  style={{ color: 'white' }}
-                >
-                  913 89 872
-                </a>
-              </div>
-              <div>
-                <p
-                  className="font-mono uppercase mb-1"
-                  style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#4A5468' }}
-                >
-                  E-post
-                </p>
-                <a
-                  href="mailto:peiwast@clean.no"
-                  className="font-display text-xl font-bold transition-colors"
-                  style={{ color: 'white' }}
-                >
-                  peiwast@clean.no
-                </a>
-              </div>
-              <div>
-                <p
-                  className="font-mono uppercase mb-1"
-                  style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#4A5468' }}
-                >
+                <p className="font-mono uppercase mb-1" style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#64748B' }}>
                   Område
                 </p>
-                <p className="font-sans" style={{ color: 'white' }}>Oslo og omegn</p>
+                <p className="font-sans" style={{ color: '#E8EBF0' }}>Oslo og omegn</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -138,39 +124,27 @@ export function Contact() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center text-center min-h-[400px]"
-                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '1.75rem', padding: '3rem' }}
+                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.75rem', padding: '3rem' }}
               >
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-                  style={{ backgroundColor: '#D4F063' }}
-                >
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ backgroundColor: '#D4F063' }}>
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M5 13l4 4L19 7" stroke="#0F1B2D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <h3
-                  className="font-display mb-3"
-                  style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.375rem)', color: 'white' }}
-                >
+                <h3 className="font-display mb-3" style={{ fontSize: 'clamp(1.5rem, 2.8vw, 2.375rem)', color: 'white' }}>
                   Takk for henvendelsen!
                 </h3>
-                <p className="font-sans" style={{ color: '#96A3B5' }}>Vi svarer deg innen 24 timer på hverdager.</p>
+                <p className="font-sans" style={{ color: '#C8D0DC' }}>Vi svarer deg innen 24 timer på hverdager.</p>
               </motion.div>
             ) : (
               <form
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-6"
-                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '1.75rem', padding: '2.5rem' }}
+                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.75rem', padding: '2.5rem' }}
                 noValidate
               >
-                {/* Service pills */}
                 <div>
-                  <p
-                    className="font-mono uppercase mb-3"
-                    style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#96A3B5' }}
-                  >
-                    Hva gjelder det?
-                  </p>
+                  <p className="font-mono uppercase mb-3" style={labelStyle}>Hva gjelder det?</p>
                   <div className="flex flex-wrap gap-2">
                     {serviceOptions.map(o => (
                       <button
@@ -181,7 +155,7 @@ export function Contact() {
                         style={
                           service === o.id
                             ? { backgroundColor: '#D4F063', color: '#0F1B2D', borderColor: '#D4F063' }
-                            : { color: 'white', borderColor: 'rgba(255,255,255,0.2)' }
+                            : { color: '#E8EBF0', borderColor: 'rgba(255,255,255,0.25)' }
                         }
                       >
                         {o.label}
@@ -192,85 +166,28 @@ export function Contact() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="contact-name"
-                      className="font-mono uppercase"
-                      style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#96A3B5' }}
-                    >
-                      Navn
-                    </label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Kari Nordmann"
-                      style={{ ...inputStyle }}
-                    />
+                    <label htmlFor="contact-name" className="font-mono uppercase" style={labelStyle}>Navn</label>
+                    <input id="contact-name" name="name" type="text" required placeholder="Kari Nordmann" style={inputStyle} />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="contact-email"
-                      className="font-mono uppercase"
-                      style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#96A3B5' }}
-                    >
-                      E-post
-                    </label>
-                    <input
-                      id="contact-email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="kari@bedrift.no"
-                      style={{ ...inputStyle }}
-                    />
+                    <label htmlFor="contact-email" className="font-mono uppercase" style={labelStyle}>E-post</label>
+                    <input id="contact-email" name="email" type="email" required placeholder="kari@bedrift.no" style={inputStyle} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="contact-company"
-                      className="font-mono uppercase"
-                      style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#96A3B5' }}
-                    >
-                      Selskap
-                    </label>
-                    <input
-                      id="contact-company"
-                      name="company"
-                      type="text"
-                      placeholder="Bedriften AS"
-                      style={{ ...inputStyle }}
-                    />
+                    <label htmlFor="contact-company" className="font-mono uppercase" style={labelStyle}>Selskap</label>
+                    <input id="contact-company" name="company" type="text" placeholder="Bedriften AS" style={inputStyle} />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="contact-sqm"
-                      className="font-mono uppercase"
-                      style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#96A3B5' }}
-                    >
-                      Areal (ca. m²)
-                    </label>
-                    <input
-                      id="contact-sqm"
-                      name="sqm"
-                      type="number"
-                      min={1}
-                      placeholder="250"
-                      style={{ ...inputStyle }}
-                    />
+                    <label htmlFor="contact-sqm" className="font-mono uppercase" style={labelStyle}>Areal (ca. m²)</label>
+                    <input id="contact-sqm" name="sqm" type="number" min={1} placeholder="250" style={inputStyle} />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="contact-message"
-                    className="font-mono uppercase"
-                    style={{ fontSize: '0.6875rem', letterSpacing: '0.12em', color: '#96A3B5' }}
-                  >
-                    Melding
-                  </label>
+                  <label htmlFor="contact-message" className="font-mono uppercase" style={labelStyle}>Melding</label>
                   <textarea
                     id="contact-message"
                     name="message"
@@ -289,12 +206,9 @@ export function Contact() {
                   {submitting ? 'Sender...' : 'Send forespørsel'}
                 </button>
 
-                <p
-                  className="font-mono text-center"
-                  style={{ fontSize: '0.6875rem', color: '#4A5468' }}
-                >
+                <p className="font-mono text-center" style={{ fontSize: '0.6875rem', color: '#96A3B5' }}>
                   Eller ring direkte:{' '}
-                  <a href="tel:91389872" style={{ color: 'white' }}>
+                  <a href="tel:91389872" style={{ color: '#E8EBF0', textDecoration: 'underline', textDecorationColor: '#D4F063', textUnderlineOffset: '2px' }}>
                     913 89 872
                   </a>
                 </p>

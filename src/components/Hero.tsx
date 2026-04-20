@@ -36,8 +36,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: EASE }}
-              className="font-mono uppercase text-ink-400 mb-5"
-              style={{ fontSize: '0.6875rem', letterSpacing: '0.15em' }}
+              className="font-mono uppercase mb-5"
+              style={{ fontSize: '0.6875rem', letterSpacing: '0.15em', color: '#2E3645' }}
             >
               Bedriftsrenhold — Oslo
             </motion.p>
@@ -58,7 +58,6 @@ export function Hero() {
                 }}
               >
                 <span style={{ position: 'relative', zIndex: 1 }}>fortjener</span>
-                {/* Lime highlight — high contrast, clearly deliberate */}
                 <span
                   aria-hidden="true"
                   style={{
@@ -80,8 +79,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
-              className="font-sans text-ink-500 leading-relaxed mb-10 max-w-md"
-              style={{ fontSize: '1.0625rem' }}
+              className="font-sans leading-relaxed mb-10 max-w-md"
+              style={{ fontSize: '1.0625rem', color: '#2E3645' }}
             >
               Vi renholder kontorer for SMB-bedrifter som er klare for å bytte leverandør.
               Sertifisert for alle overflatetyper — uten at du trenger å løfte en finger.
@@ -102,7 +101,8 @@ export function Hero() {
               </a>
               <a
                 href="tel:91389872"
-                className="inline-flex items-center gap-2 font-sans text-sm font-medium text-ink-400 hover:text-ink-800 transition-colors"
+                className="inline-flex items-center gap-2 font-sans text-sm font-medium transition-colors"
+                style={{ color: '#2E3645' }}
               >
                 eller ring 913 89 872
               </a>
@@ -124,8 +124,8 @@ export function Hero() {
                     {s.value}
                   </span>
                   <span
-                    className="font-sans text-ink-400"
-                    style={{ fontSize: '0.8125rem', letterSpacing: '0.01em' }}
+                    className="font-sans"
+                    style={{ fontSize: '0.8125rem', color: '#2E3645' }}
                   >
                     {s.label}
                   </span>
@@ -150,10 +150,11 @@ export function Hero() {
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80&auto=format&fit=crop"
                 alt="Rent og lyst kontorlokale — resultat av profesjonelt bedriftsrenhold"
                 className="w-full h-full object-cover"
+                width={900}
+                height={1125}
               />
             </div>
 
-            {/* Floating accent card — clearly overlapping the photo */}
             <div
               style={{
                 position: 'absolute',
@@ -172,7 +173,7 @@ export function Hero() {
               >
                 Befaring inkludert
               </p>
-              <p className="font-sans text-ink-700 mt-0.5" style={{ fontSize: '0.8125rem' }}>
+              <p className="font-sans" style={{ fontSize: '0.8125rem', color: '#1B2333' }}>
                 Alltid uforpliktende
               </p>
             </div>

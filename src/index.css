@@ -5,7 +5,7 @@
 :root {
   color-scheme: light;
   --bg: #FAFAF7;
-  --bg-soft: #F2F1EB;
+  --bg-soft: #F0F0EC;
   --bg-dark: #0F1B2D;
   --muted: #4A5468;
 }
@@ -19,6 +19,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Links in body text get underlines for accessibility */
+p a, li a {
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+}
+/* Navigation/button links keep their custom styling */
+nav a, [role="navigation"] a, button a { text-decoration: none; }
+
 .bg-bg       { background-color: var(--bg); }
 .bg-bg-soft  { background-color: var(--bg-soft); }
 .bg-bg-dark  { background-color: var(--bg-dark); }
@@ -29,7 +37,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid #C5E640;
+  outline: 2px solid #8AA813;
   outline-offset: 2px;
   border-radius: 8px;
 }
