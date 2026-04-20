@@ -1,7 +1,3 @@
-/**
- * Process — numbered 01/02/03/04 steps.
- * Answers the B2B buyer's question: "What happens after I contact you?"
- */
 import { motion } from 'framer-motion';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -31,7 +27,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="py-20 md:py-28 bg-bg-soft">
+    <section className="py-20 md:py-28" style={{ backgroundColor: 'var(--bg-soft)' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -40,8 +36,16 @@ export function Process() {
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-14 max-w-lg"
         >
-          <p className="font-mono text-label uppercase tracking-widest text-muted mb-3">(03) Slik fungerer det</p>
-          <h2 className="font-display text-display-lg text-ink-800">
+          <p
+            className="font-mono uppercase text-ink-500 mb-3"
+            style={{ fontSize: '0.6875rem', letterSpacing: '0.12em' }}
+          >
+            (03) Slik fungerer det
+          </p>
+          <h2
+            className="font-display text-ink-800"
+            style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: '1.07', letterSpacing: '-0.025em' }}
+          >
             Fire steg fra første kontakt til rent kontor.
           </h2>
         </motion.div>
@@ -54,18 +58,14 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.55, ease: EASE, delay: i * 0.09 }}
-              className="relative flex flex-col gap-4"
+              className="flex flex-col gap-4"
             >
-              {/* Connector line (desktop) */}
-              {i < steps.length - 1 && (
-                <div
-                  aria-hidden="true"
-                  className="hidden lg:block absolute top-6 left-[calc(100%+0px)] w-full h-px bg-ink-100 z-0"
-                  style={{ width: 'calc(100% - 2.5rem)', left: 'calc(1.5rem + 100%)' }}
-                />
-              )}
-
-              <span className="font-mono text-5xl font-bold text-brand-300 leading-none">{step.num}</span>
+              <span
+                className="font-display font-bold leading-none"
+                style={{ fontSize: '3rem', color: '#D4F063' }}
+              >
+                {step.num}
+              </span>
               <h3 className="font-display text-xl font-bold text-ink-800">{step.title}</h3>
               <p className="font-sans text-ink-500 text-sm leading-relaxed">{step.body}</p>
             </motion.div>

@@ -16,19 +16,11 @@ export default {
           400: '#C5E640', 500: '#AECF1A', 600: '#8AA813', 700: '#677F0E',
           800: '#445508', 900: '#222B04',
         },
-        bg: { DEFAULT: '#FAFAF7', soft: '#F2F1EB', dark: '#0F1B2D' },
-        muted: '#4A5468',
       },
       fontFamily: {
         sans:    ['"Inter Tight"', 'system-ui', 'sans-serif'],
         display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
         mono:    ['"Geist Mono"', 'ui-monospace', 'monospace'],
-      },
-      fontSize: {
-        'display-xl': ['clamp(2.5rem, 5.5vw, 4.75rem)', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
-        'display-lg': ['clamp(2rem, 4vw, 3.5rem)',     { lineHeight: '1.07', letterSpacing: '-0.025em' }],
-        'display-md': ['clamp(1.5rem, 2.8vw, 2.375rem)',{ lineHeight: '1.15', letterSpacing: '-0.015em' }],
-        'label':      ['0.6875rem',                    { lineHeight: '1.4',  letterSpacing: '0.12em'   }],
       },
       borderRadius: { '2xl': '1.25rem', '3xl': '1.75rem' },
       boxShadow: {

@@ -1,15 +1,10 @@
-/**
- * Reviews — "coming soon" section.
- * Rule: never invent testimonials. No initials avatars.
- * Render a credible "reviews coming soon — see our Google page" call.
- */
 import { motion } from 'framer-motion';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Reviews() {
   return (
-    <section className="py-20 md:py-28 bg-bg-soft">
+    <section className="py-20 md:py-28" style={{ backgroundColor: 'var(--bg-soft)' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -18,21 +13,29 @@ export function Reviews() {
           transition={{ duration: 0.6, ease: EASE }}
           className="max-w-2xl mx-auto text-center"
         >
-          <p className="font-mono text-label uppercase tracking-widest text-muted mb-4">Anmeldelser</p>
-          <h2 className="font-display text-display-lg text-ink-800 mb-5">
+          <p
+            className="font-mono uppercase text-ink-500 mb-4"
+            style={{ fontSize: '0.6875rem', letterSpacing: '0.12em' }}
+          >
+            Anmeldelser
+          </p>
+          <h2
+            className="font-display text-ink-800 mb-5"
+            style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', lineHeight: '1.07', letterSpacing: '-0.025em' }}
+          >
             Ekte tilbakemeldinger,<br />
             fra ekte kunder.
           </h2>
           <p className="font-sans text-ink-500 leading-relaxed mb-8">
-            Vi samler anmeldelser fra Google. Etter din første rengjoringssyklus
+            Vi samler anmeldelser fra Google. Etter din første renholdssyklus
             sender vi deg en lenke for tilbakemelding. Vi viser dem her så snart
             de er inne.
           </p>
           <a
-            href="https://www.google.com/maps/search/Peiwast+Cleaning"
+            href="https://www.google.com/maps/search/Peiwast+Cleaning+Oslo"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 border border-ink-200 hover:border-ink-400 text-ink-700 hover:text-ink-900 font-sans text-sm font-medium px-6 py-3 rounded-full transition-all"
+            className="inline-flex items-center gap-3 font-sans text-sm font-medium px-6 py-3 rounded-full transition-all border border-ink-200 hover:border-ink-400 text-ink-700 hover:text-ink-900"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
